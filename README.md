@@ -176,8 +176,6 @@ cd playground
 open index.html
 ```
 
-Future GitHub Pages support can be linked here once the playground is deployed.
-
 ## Development
 
 ```bash
