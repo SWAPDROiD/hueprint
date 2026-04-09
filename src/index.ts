@@ -7,7 +7,9 @@ export type {
   GradientOptions,
   HueprintInstance,
   LoggerOptions,
+  RenderTarget,
   StyleOptions,
+  StyledObject,
   ThemeDefinition,
   ThemeEntry,
 } from './core/types.js';

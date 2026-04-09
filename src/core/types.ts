@@ -72,10 +72,13 @@ export interface GradientOptions {
   colors: string[];
 }
 
+export type RenderTarget = 'terminal' | 'html' | 'object';
+
 export interface CreateHueprintOptions {
   enabled?: boolean;
   theme?: ThemeDefinition;
   logger?: LoggerOptions;
+  target?: RenderTarget;
 }
 
 export type LogLevel = 'success' | 'error' | 'warn' | 'info';
@@ -131,4 +134,9 @@ export interface HueprintInstance extends ChainInstance {
   format: (level: LogLevel, ...input: unknown[]) => string;
   withTheme: (theme: ThemeDefinition) => HueprintInstance;
   createLogger: (options?: LoggerOptions) => LogHelpers;
+}
+
+export interface StyledObject {
+  text: string;
+  style: Record<string, any>;
 }

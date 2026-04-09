@@ -6,6 +6,7 @@ import type {
   HueprintInstance,
   LogLevel,
   LoggerOptions,
+  RenderTarget,
   StyleName,
   StyleOptions,
   ThemeAccessor,
@@ -17,18 +18,27 @@ import { modifiers } from '../styles/modifiers.js';
 import { applyGradient } from '../gradient/gradient.js';
 import { formatLogMessage } from '../logger/logger.js';
 import { resolveThemeEntry } from '../theme/theme.js';
+import { renderTerminal } from '../renderers/terminal.js';
+import { renderHTML } from '../renderers/html.js';
+import { renderObject } from '../renderers/object.js';
+import type { StyledObject } from '../renderers/object.js';
 
 const styleProperties = [...foregroundColors, ...backgroundColors, ...modifiers] as const;
 
-const applyAnsiStyles = (text: string, styles: readonly StyleName[], enabled: boolean): string => {
-  if (!enabled || styles.length === 0 || text.length === 0) {
-    return text;
-  }
+const createRenderer = (target: RenderTarget) => {
+  const renderFn = (text: string, styles: readonly StyleName[]): string | StyledObject => {
+    if (target === 'html') {
+      return renderHTML(text, styles);
+    }
 
-  const resolved = dedupeStyles(styles);
-  const opens = resolved.map((style) => ansiCodes[style].open).join('');
-  const closes = [...resolved].reverse().map((style) => ansiCodes[style].close).join('');
-  return `${opens}${text}${closes}`;
+    if (target === 'object') {
+      return renderObject(text, styles);
+    }
+
+    return renderTerminal(text, styles);
+  };
+
+  return renderFn;
 };
 
 const createThemeAccessor = (
@@ -67,20 +77,33 @@ export const buildHueprint = (options: CreateHueprintOptions = {}): HueprintInst
   const enabled = supportsColor(options.enabled);
   const theme = options.theme ?? {};
   const loggerOptions = options.logger;
+  const target = options.target ?? 'terminal';
+  const renderer = createRenderer(target);
 
-  const styleText = (input: unknown, styleOptions: StyleOptions): string =>
-    applyAnsiStyles(toText(input), normalizeStyleOptions(styleOptions), enabled);
+  const styleText = (input: unknown, styleOptions: StyleOptions): any => {
+    const text = toText(input);
+    const styles = normalizeStyleOptions(styleOptions);
+    
+    if (!enabled) {
+      return target === 'object' ? { text, style: {} } : text;
+    }
 
-  const gradientText = (input: unknown, gradientOptions: GradientOptions): string =>
-    applyGradient(input, gradientOptions, enabled);
-
-  const themeText = (name: string, input: unknown): string => {
-    const entry = resolveThemeEntry(theme, name);
-    const core = styleText(input, entry);
-    return `${entry.prefix ?? ''}${core}${entry.suffix ?? ''}`;
+    return renderer(text, styles);
   };
 
-  const format = (level: LogLevel, ...input: unknown[]): string =>
+  const gradientText = (input: unknown, gradientOptions: GradientOptions): any =>
+    applyGradient(input, gradientOptions, enabled);
+
+  const themeText = (name: string, input: unknown): any => {
+    const entry = resolveThemeEntry(theme, name);
+    const core = styleText(input, entry);
+    const styledText = target === 'object' ? (core as StyledObject).text : (core as string);
+    return target === 'object' 
+      ? { text: `${entry.prefix ?? ''}${styledText}${entry.suffix ?? ''}`, style: (core as StyledObject).style } 
+      : `${entry.prefix ?? ''}${core}${entry.suffix ?? ''}`;
+  };
+
+  const format = (level: LogLevel, ...input: unknown[]): any =>
     formatLogMessage(level, loggerOptions, styleText, ...input);
 
   const createLogHelpers = (overrides?: LoggerOptions) => ({
@@ -91,7 +114,13 @@ export const buildHueprint = (options: CreateHueprintOptions = {}): HueprintInst
   });
 
   const makeChain = (styles: readonly StyleName[]): HueprintInstance =>
-    new Proxy(((input: unknown) => applyAnsiStyles(toText(input), styles, enabled)) as HueprintInstance, {
+    new Proxy(((input: unknown) => {
+      const text = toText(input);
+      if (!enabled) {
+        return target === 'object' ? { text, style: {} } : text;
+      }
+      return renderer(text, styles);
+    }) as HueprintInstance, {
       get(_target, property) {
         if (property === 'style') {
           return styleText;
@@ -111,6 +140,7 @@ export const buildHueprint = (options: CreateHueprintOptions = {}): HueprintInst
               ...options,
               enabled,
               theme: nextTheme,
+              target,
             };
 
             if (loggerOptions) {
@@ -144,7 +174,11 @@ export const buildHueprint = (options: CreateHueprintOptions = {}): HueprintInst
         return Reflect.get(_target, property);
       },
       apply(_target, _thisArg, argumentsList) {
-        return applyAnsiStyles(toText(argumentsList[0]), styles, enabled);
+        const text = toText(argumentsList[0]);
+        if (!enabled) {
+          return target === 'object' ? { text, style: {} } : text;
+        }
+        return renderer(text, styles);
       },
     });
 
