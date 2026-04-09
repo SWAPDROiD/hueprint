@@ -1,0 +1,67 @@
+0 verbose cli /opt/homebrew/Cellar/node/25.6.1/bin/node /opt/homebrew/bin/npm
+1 info using npm@11.9.0
+2 info using node@v25.6.1
+3 silly config load:file:/opt/homebrew/lib/node_modules/npm/npmrc
+4 silly config load:file:/Users/swapnil.nandapure/Documents/GitHub/hueprint/.npmrc
+5 silly config load:file:/Users/swapnil.nandapure/.npmrc
+6 silly config load:file:/opt/homebrew/etc/npmrc
+7 verbose title npm pack
+8 verbose argv "pack" "--cache" ".npm-cache"
+9 verbose logfile logs-max:10 dir:/Users/swapnil.nandapure/Documents/GitHub/hueprint/.npm-cache/_logs/2026-04-09T17_02_42_074Z-
+10 verbose logfile /Users/swapnil.nandapure/Documents/GitHub/hueprint/.npm-cache/_logs/2026-04-09T17_02_42_074Z-debug-0.log
+11 silly logfile done cleaning log files
+12 http fetch GET https://registry.npmjs.org/npm attempt 1 failed with ENOTFOUND
+13 silly packumentCache heap:4496293888 maxSize:1124073472 maxEntrySize:562036736
+14 notice
+15 notice 📦  hueprint@0.1.0
+16 notice Tarball Contents
+17 notice 5.1kB README.md
+17 notice 10.8kB dist/core/index.cjs
+17 notice 28.1kB dist/core/index.cjs.map
+17 notice 1.4kB dist/core/index.d.cts
+17 notice 1.4kB dist/core/index.d.ts
+17 notice 10.6kB dist/core/index.js
+17 notice 28.1kB dist/core/index.js.map
+17 notice 2.7kB dist/gradient/index.cjs
+17 notice 9.7kB dist/gradient/index.cjs.map
+17 notice 191B dist/gradient/index.d.cts
+17 notice 190B dist/gradient/index.d.ts
+17 notice 2.7kB dist/gradient/index.js
+17 notice 9.7kB dist/gradient/index.js.map
+17 notice 10.9kB dist/index.cjs
+17 notice 29.1kB dist/index.cjs.map
+17 notice 920B dist/index.d.cts
+17 notice 917B dist/index.d.ts
+17 notice 10.7kB dist/index.js
+17 notice 29.1kB dist/index.js.map
+17 notice 2.1kB dist/logger/index.cjs
+17 notice 6.8kB dist/logger/index.cjs.map
+17 notice 714B dist/logger/index.d.cts
+17 notice 713B dist/logger/index.d.ts
+17 notice 2.0kB dist/logger/index.js
+17 notice 6.8kB dist/logger/index.js.map
+17 notice 391B dist/theme/index.cjs
+17 notice 765B dist/theme/index.cjs.map
+17 notice 282B dist/theme/index.d.cts
+17 notice 281B dist/theme/index.d.ts
+17 notice 335B dist/theme/index.js
+17 notice 762B dist/theme/index.js.map
+17 notice 3.6kB dist/types-B_mnOaPQ.d.cts
+17 notice 3.6kB dist/types-B_mnOaPQ.d.ts
+17 notice 1.8kB package.json
+18 notice Tarball Details
+19 notice name: hueprint
+20 notice version: 0.1.0
+21 notice filename: hueprint-0.1.0.tgz
+22 notice package size: 29.4 kB
+23 notice unpacked size: 223.2 kB
+24 notice shasum: 5cb7e8762c6cbecf3ca8bf641f67464ce46482cc
+25 notice integrity: sha512-1LWakRlnCew06[...]ICAg7NtDdwNlg==
+26 notice total files: 34
+27 notice
+28 verbose cwd /Users/swapnil.nandapure/Documents/GitHub/hueprint
+29 verbose os Darwin 25.4.0
+30 verbose node v25.6.1
+31 verbose npm  v11.9.0
+32 verbose exit 0
+33 info ok
