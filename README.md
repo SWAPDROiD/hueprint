@@ -178,10 +178,6 @@ open index.html
 
 Future GitHub Pages support can be linked here once the playground is deployed.
 
-## 🌐 Live Demo
-
-[https://YOUR_USERNAME.github.io/hueprint](https://github.com/SWAPDROiD/hueprint)
-
 ## Development
 
 ```bash
