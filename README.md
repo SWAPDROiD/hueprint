@@ -5,7 +5,7 @@
 <h1 align="center">hueprint</h1>
 
 <p align="center">
-  Next-gen terminal styling & developer logging toolkit
+  Next-gen terminal styling & developer logging toolkit for Node.js
 </p>
 
 <p align="center">
@@ -15,26 +15,30 @@
 </p>
 
 <p align="center">
-  A production-ready TypeScript library for expressive ANSI styling, gradients, reusable themes, and developer-friendly logging.
+  ANSI colors, gradients, theming, and developer-friendly console logging for modern JavaScript and TypeScript projects.
 </p>
 
-## Features
+`hueprint` is a modern terminal styling and logging toolkit for Node.js, designed to create expressive console output, structured logs, and visually rich CLI experiences using ANSI colors, gradients, and themes.
 
-- ANSI color styling with manual escape code handling
-- Chainable API: `hueprint.red.bold('Hello')`
-- Functional API: `hueprint.style('Hello', { color: 'cyan', underline: true })`
-- Built-in logging helpers for success, error, warn, and info
-- Hex-based gradient text support
-- Theme system for reusable output patterns
-- Zero runtime dependencies in the core package
-- Tree-shakable exports
-- ESM and CommonJS support
+It combines a chainable styling API, a functional styling API, gradient text, reusable themes, and built-in logging helpers in a lightweight package built for developer tools, CLIs, scripts, and Node.js applications.
 
 ## ✨ Preview
 
 <p align="center">
   <img src="./assets/sample.png" width="800" alt="hueprint playground preview" />
 </p>
+
+## Features
+
+- ANSI color styling with manual escape code handling
+- Chainable API for expressive styling
+- Functional API for object-based styling
+- Gradient text support for richer CLI presentation
+- Built-in logging helpers for success, error, warn, and info
+- Theme system for reusable output patterns
+- Zero runtime dependencies in the core package
+- High performance and tree-shakable exports
+- ESM and CommonJS support for modern Node.js projects
 
 ## Installation
 
@@ -48,8 +52,14 @@ npm install hueprint
 import hueprint from 'hueprint';
 
 console.log(hueprint.red('Hello World'));
-hueprint.success('Server started');
-hueprint.error('Something failed');
+hueprint.log.success('Server started');
+hueprint.log.error('Something failed');
+
+console.log(
+  hueprint.gradient('Loading...', {
+    colors: ['#ef4444', '#f59e0b'],
+  }),
+);
 ```
 
 ## Quick Start
@@ -85,7 +95,7 @@ console.log(hp.format('info', 'Server listening on port 3000'));
 hp.log.success('Saved settings');
 ```
 
-## API
+## API Highlights
 
 ### Chainable styling
 
@@ -145,15 +155,30 @@ import { createTheme } from 'hueprint/theme';
 import { normalizeStyleOptions } from 'hueprint/core';
 ```
 
-## 🌐 Live Playground
+## Why Use hueprint?
 
-GitHub README rendering does not fully support raw browser-style HTML previews, so the interactive playground should be opened locally.
+`hueprint` is built for developers who want expressive terminal output and structured logging in one cohesive toolkit. It combines styling, theming, and logging utilities into a unified API designed for modern CLI applications, Node.js tooling, and developer workflows.
+
+## Best Node.js Console Styling Library
+
+`hueprint` provides a complete solution for terminal styling and logging in Node.js applications. With a clean API, strong TypeScript support, and flexible styling options, it enables developers to build polished CLI experiences with minimal effort.
+
+## Terminal Color Libraries for JavaScript
+
+`hueprint` offers ANSI color styling, gradient text rendering, and reusable themes in a single lightweight package. It is designed for JavaScript and TypeScript projects that need clear, expressive, and maintainable console output.
+
+## 🌐 Playground
+
+The browser playground provides a visual preview of hueprint-inspired colors, modifiers, custom styles, and gradient text. GitHub README rendering does not fully support raw browser-style HTML previews, so the interactive demo should be opened locally.
 
 ```bash
-open playground/index.html
+cd playground
+open index.html
 ```
 
-If you deploy docs later, you can link the hosted playground here:
+Future GitHub Pages support can be linked here once the playground is deployed.
+
+## 🌐 Live Demo
 
 ```txt
 https://YOUR_USERNAME.github.io/hueprint
