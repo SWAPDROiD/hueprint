@@ -224,7 +224,7 @@ import { createTheme } from 'hueprint/theme';
 import { normalizeStyleOptions } from 'hueprint/core';
 ```
 
-## 🌐 Why Use hueprint?
+## Why Use hueprint?
 
 `hueprint` is built for developers who want consistent styling across terminal, web, and UI frameworks. It provides a universal styling engine that works seamlessly whether you're building CLI tools, server-side rendering, or interactive applications. With a single API, you can create expressive output for any environment—terminal (ANSI), browsers (HTML), or web frameworks (style objects).
 
