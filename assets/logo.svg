@@ -1,0 +1,34 @@
+<svg width="420" height="120" viewBox="0 0 420 120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ff4d4d;stop-opacity:1" />
+      <stop offset="25%" style="stop-color:#f9cb28;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#4ade80;stop-opacity:1" />
+      <stop offset="75%" style="stop-color:#38bdf8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#c084fc;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect x="0" y="0" width="420" height="120" rx="16" fill="#0f172a"/>
+
+  <!-- Icon -->
+  <circle cx="60" cy="60" r="30" fill="url(#grad1)" />
+
+  <!-- Text -->
+  <text x="110" y="70"
+        font-family="monospace"
+        font-size="42"
+        fill="url(#grad1)"
+        font-weight="bold">
+    hueprint
+  </text>
+
+  <!-- Tagline -->
+  <text x="110" y="95"
+        font-family="monospace"
+        font-size="14"
+        fill="#94a3b8">
+    terminal styling + dev logging
+  </text>
+</svg>
