@@ -8,6 +8,8 @@ export default defineConfig([
       'gradient/index': 'src/gradient/index.ts',
       'logger/index': 'src/logger/index.ts',
       'theme/index': 'src/theme/index.ts',
+      'html/index': 'src/html/index.ts',
+      'object/index': 'src/object/index.ts',
     },
     format: ['esm', 'cjs'],
     dts: true,

@@ -5,7 +5,7 @@
 <h1 align="center">hueprint</h1>
 
 <p align="center">
-  Next-gen terminal styling & developer logging toolkit for Node.js
+  Universal terminal and web styling toolkit for Node.js
 </p>
 
 <p align="center">
@@ -15,25 +15,29 @@
 </p>
 
 <p align="center">
-  ANSI colors, gradients, theming, and developer-friendly console logging for modern JavaScript and TypeScript projects.
+  ANSI colors, HTML rendering, style objects, gradients, theming, and developer-friendly logging for modern JavaScript and TypeScript.
 </p>
 
-`hueprint` is a modern terminal styling and logging toolkit for Node.js, designed to create expressive console output, structured logs, and visually rich CLI experiences using ANSI colors, gradients, and themes.
+`hueprint` is a universal styling and logging toolkit for Node.js, designed to create expressive output across multiple targets: terminals (ANSI), web (HTML), and UI frameworks (style objects).
 
 It combines a chainable styling API, a functional styling API, gradient text, reusable themes, and built-in logging helpers in a lightweight package built for developer tools, CLIs, scripts, and Node.js applications.
 
 ## ✨ Preview
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/SWAPDROiD/hueprint/main/assets/sample.png" width="800" alt="hueprint preview" />
+  <img src="https://raw.githubusercontent.com/SWAPDROiD/hueprint/main/assets/sample-1.png" width="800" alt="hueprint preview" />
+  <img src="https://raw.githubusercontent.com/SWAPDROiD/hueprint/main/assets/sample-2.png" width="800" alt="hueprint preview" />
 </p>
 
 ## Features
 
+- **Universal rendering engine** - Terminal (ANSI), HTML, and framework-agnostic style objects
 - ANSI color styling with manual escape code handling
 - Chainable API for expressive styling
 - Functional API for object-based styling
-- Gradient text support for richer CLI presentation
+- HTML output for web rendering and browser environments
+- Framework-friendly style objects for React, Angular, Vue, and more
+- Gradient text support for richer terminal and web presentation
 - Built-in logging helpers for success, error, warn, and info
 - Theme system for reusable output patterns
 - Zero runtime dependencies in the core package
@@ -93,6 +97,71 @@ const hp = createHueprint({ theme });
 console.log(hp.theme('success', 'Deployed'));
 console.log(hp.format('info', 'Server listening on port 3000'));
 hp.log.success('Saved settings');
+```
+
+## 🌐 Universal Rendering
+
+hueprint supports multiple output formats, allowing you to use the same API across different environments:
+
+### Terminal (Default)
+
+```ts
+import hueprint from 'hueprint';
+
+console.log(hueprint.red.bold('Hello Terminal'));
+// Output: Red bold text in terminal
+```
+
+### HTML Output
+
+```ts
+import hueprint from 'hueprint/html';
+
+const html = hueprint.red.bold('Hello Web');
+// Output: <span style="color:#ef4444;font-weight:bold">Hello Web</span>
+
+document.body.innerHTML = html;
+```
+
+Or use on the default instance:
+
+```ts
+import hueprint from 'hueprint';
+
+const html = hueprint.html.red.bold('Hello Web');
+document.body.innerHTML = html;
+```
+
+### Style Objects (React, Angular, Vue)
+
+```ts
+import hueprint from 'hueprint/object';
+
+const { text, style } = hueprint.red.bold('Hello UI');
+// Returns: { text: 'Hello UI', style: { color: '#ef4444', fontWeight: 'bold' } }
+```
+
+**React:**
+```tsx
+<span style={style}>{text}</span>
+```
+
+**Angular:**
+```html
+<span [ngStyle]="style">{{ text }}</span>
+```
+
+**Vue:**
+```vue
+<span :style="style">{{ text }}</span>
+```
+
+Or use on the default instance:
+
+```ts
+import hueprint from 'hueprint';
+
+const { text, style } = hueprint.object.red.bold('Hello UI');
 ```
 
 ## API Highlights
@@ -157,15 +226,19 @@ import { normalizeStyleOptions } from 'hueprint/core';
 
 ## Why Use hueprint?
 
-`hueprint` is built for developers who want expressive terminal output and structured logging in one cohesive toolkit. It combines styling, theming, and logging utilities into a unified API designed for modern CLI applications, Node.js tooling, and developer workflows.
+`hueprint` is built for developers who want consistent styling across terminal, web, and UI frameworks. It provides a universal styling engine that works seamlessly whether you're building CLI tools, server-side rendering, or interactive applications. With a single API, you can create expressive output for any environment—terminal (ANSI), browsers (HTML), or web frameworks (style objects).
 
-## Best Node.js Console Styling Library
+## Best Terminal Styling for Node.js
 
 `hueprint` provides a complete solution for terminal styling and logging in Node.js applications. With a clean API, strong TypeScript support, and flexible styling options, it enables developers to build polished CLI experiences with minimal effort.
 
-## Terminal Color Libraries for JavaScript
+## HTML and CSS Styling for Web
 
-`hueprint` offers ANSI color styling, gradient text rendering, and reusable themes in a single lightweight package. It is designed for JavaScript and TypeScript projects that need clear, expressive, and maintainable console output.
+`hueprint` generates clean HTML with inline CSS styles for web browsers, making it easy to create styled components without writing CSS. Perfect for server-side rendering, email templates, and dynamic UI generation.
+
+## Framework-Agnostic Style Objects
+
+`hueprint` returns framework-friendly style objects that work seamlessly with React, Angular, Vue, and other UI frameworks. No framework lock-in—just simple JSON-compatible objects.
 
 ## 🌐 Playground
 

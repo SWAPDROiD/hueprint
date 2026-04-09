@@ -1,7 +1,7 @@
 {
   "name": "hueprint",
   "version": "0.1.2",
-  "description": "Next-generation terminal styling and logging toolkit for Node.js with ANSI colors, gradients, themes, and developer-friendly logging.",
+  "description": "Universal terminal and web styling toolkit for Node.js with ANSI colors, HTML rendering, gradients, frameworks-friendly style objects, and developer logging.",
   "keywords": [
     "hueprint",
     "hue",
@@ -17,7 +17,17 @@
     "developer tools",
     "console styling",
     "terminal colors",
-    "javascript"
+    "html styling",
+    "style objects",
+    "web styling",
+    "react styling",
+    "angular styling",
+    "vue styling",
+    "css-in-js",
+    "universal styling",
+    "multi-target rendering",
+    "javascript",
+    "typescript"
   ],
   "license": "MIT",
   "type": "module",
@@ -49,6 +59,16 @@
       "types": "./dist/theme/index.d.ts",
       "import": "./dist/theme/index.js",
       "require": "./dist/theme/index.cjs"
+    },
+    "./html": {
+      "types": "./dist/html/index.d.ts",
+      "import": "./dist/html/index.js",
+      "require": "./dist/html/index.cjs"
+    },
+    "./object": {
+      "types": "./dist/object/index.d.ts",
+      "import": "./dist/object/index.js",
+      "require": "./dist/object/index.cjs"
     }
   },
   "sideEffects": false,
