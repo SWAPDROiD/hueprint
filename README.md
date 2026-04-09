@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./assets/logo.svg" width="400" alt="hueprint logo" />
+  <img src="https://raw.githubusercontent.com/SWAPDROiD/hueprint/main/assets/logo.svg" width="400" alt="hueprint logo" />
 </p>
 
 <h1 align="center">hueprint</h1>
@@ -25,7 +25,7 @@ It combines a chainable styling API, a functional styling API, gradient text, re
 ## ✨ Preview
 
 <p align="center">
-  <img src="./assets/sample.png" width="800" alt="hueprint playground preview" />
+  <img src="https://raw.githubusercontent.com/SWAPDROiD/hueprint/main/assets/sample.png" width="800" alt="hueprint preview" />
 </p>
 
 ## Features
