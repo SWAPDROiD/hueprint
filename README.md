@@ -224,7 +224,7 @@ import { createTheme } from 'hueprint/theme';
 import { normalizeStyleOptions } from 'hueprint/core';
 ```
 
-## Why Use hueprint?
+## 🌐 Why Use hueprint?
 
 `hueprint` is built for developers who want consistent styling across terminal, web, and UI frameworks. It provides a universal styling engine that works seamlessly whether you're building CLI tools, server-side rendering, or interactive applications. With a single API, you can create expressive output for any environment—terminal (ANSI), browsers (HTML), or web frameworks (style objects).
 
@@ -240,20 +240,3 @@ import { normalizeStyleOptions } from 'hueprint/core';
 
 `hueprint` returns framework-friendly style objects that work seamlessly with React, Angular, Vue, and other UI frameworks. No framework lock-in—just simple JSON-compatible objects.
 
-## 🌐 Playground
-
-The browser playground provides a visual preview of hueprint-inspired colors, modifiers, custom styles, and gradient text. GitHub README rendering does not fully support raw browser-style HTML previews, so the interactive demo should be opened locally.
-
-```bash
-cd playground
-open index.html
-```
-
-## Development
-
-```bash
-npm install
-npm run build
-npm run test
-npm run typecheck
-```
