@@ -180,9 +180,7 @@ Future GitHub Pages support can be linked here once the playground is deployed.
 
 ## 🌐 Live Demo
 
-```txt
 [https://YOUR_USERNAME.github.io/hueprint](https://github.com/SWAPDROiD/hueprint)
-```
 
 ## Development
 
