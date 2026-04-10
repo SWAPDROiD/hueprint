@@ -1,6 +1,6 @@
 {
   "name": "hueprint",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Universal terminal and web styling toolkit for Node.js with ANSI colors, HTML rendering, gradients, frameworks-friendly style objects, and developer logging.",
   "keywords": [
     "hueprint",
