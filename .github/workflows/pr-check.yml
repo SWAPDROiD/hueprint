@@ -1,0 +1,40 @@
+name: PR Checks
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Build
+        run: npm run build
+
+      - name: Run tests
+        run: npm test
+
+      - name: Ensure changeset exists
+        run: |
+          changeset_files="$(find .changeset -maxdepth 1 -type f -name '*.md' ! -name 'README.md')"
+          if [ -z "$changeset_files" ]; then
+            echo "No changeset found. Run 'npx changeset' before creating this PR."
+            exit 1
+          fi
