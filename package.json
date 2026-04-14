@@ -78,6 +78,7 @@
   "scripts": {
     "build": "tsup --config build.config.ts",
     "clean": "rm -rf dist",
+    "release": "changeset publish",
     "test": "node --import tsx --test tests/**/*.test.ts",
     "typecheck": "tsc --noEmit"
   },
@@ -85,6 +86,7 @@
     "node": ">=18"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.30.0",
     "@types/node": "^22.15.3",
     "tsup": "^8.3.5",
     "tsx": "^4.19.3",
