@@ -10,11 +10,11 @@ import {
 describe('ANSI Codes', () => {
   describe('colorCodes', () => {
     it('should have all foreground colors', () => {
-      const colors = ['black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white', 'gray'];
+      const colors = ['black', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white', 'gray'] as const;
       for (const color of colors) {
-        expect(colorCodes[color as any]).toBeDefined();
-        expect(colorCodes[color as any]).toHaveProperty('open');
-        expect(colorCodes[color as any]).toHaveProperty('close');
+        expect((colorCodes as Record<string, any>)[color]).toBeDefined();
+        expect((colorCodes as Record<string, any>)[color]).toHaveProperty('open');
+        expect((colorCodes as Record<string, any>)[color]).toHaveProperty('close');
       }
     });
 
@@ -49,11 +49,11 @@ describe('ANSI Codes', () => {
         'bgCyan',
         'bgWhite',
         'bgGray',
-      ];
+      ] as const;
       for (const color of colors) {
-        expect(backgroundColorCodes[color as any]).toBeDefined();
-        expect(backgroundColorCodes[color as any]).toHaveProperty('open');
-        expect(backgroundColorCodes[color as any]).toHaveProperty('close');
+        expect((backgroundColorCodes as Record<string, any>)[color]).toBeDefined();
+        expect((backgroundColorCodes as Record<string, any>)[color]).toHaveProperty('open');
+        expect((backgroundColorCodes as Record<string, any>)[color]).toHaveProperty('close');
       }
     });
 
@@ -78,11 +78,11 @@ describe('ANSI Codes', () => {
 
   describe('modifierCodes', () => {
     it('should have all modifiers', () => {
-      const modifiers = ['bold', 'dim', 'italic', 'underline', 'inverse', 'hidden', 'strikethrough'];
+      const modifiers = ['bold', 'dim', 'italic', 'underline', 'inverse', 'hidden', 'strikethrough'] as const;
       for (const modifier of modifiers) {
-        expect(modifierCodes[modifier as any]).toBeDefined();
-        expect(modifierCodes[modifier as any]).toHaveProperty('open');
-        expect(modifierCodes[modifier as any]).toHaveProperty('close');
+        expect((modifierCodes as Record<string, any>)[modifier]).toBeDefined();
+        expect((modifierCodes as Record<string, any>)[modifier]).toHaveProperty('open');
+        expect((modifierCodes as Record<string, any>)[modifier]).toHaveProperty('close');
       }
     });
 
@@ -107,19 +107,19 @@ describe('ANSI Codes', () => {
   describe('ansiCodes', () => {
     it('should contain all colors', () => {
       for (const color of Object.keys(colorCodes)) {
-        expect(ansiCodes[color as any]).toBeDefined();
+        expect((ansiCodes as Record<string, any>)[color]).toBeDefined();
       }
     });
 
     it('should contain all background colors', () => {
       for (const color of Object.keys(backgroundColorCodes)) {
-        expect(ansiCodes[color as any]).toBeDefined();
+        expect((ansiCodes as Record<string, any>)[color]).toBeDefined();
       }
     });
 
     it('should contain all modifiers', () => {
       for (const modifier of Object.keys(modifierCodes)) {
-        expect(ansiCodes[modifier as any]).toBeDefined();
+        expect((ansiCodes as Record<string, any>)[modifier]).toBeDefined();
       }
     });
   });

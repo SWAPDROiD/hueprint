@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import {
   isPlainObject,
   toText,
@@ -74,7 +74,7 @@ describe('Core Utils', () => {
 
     it('should handle errors without stack trace', () => {
       const error = new Error('Test error');
-      error.stack = undefined;
+      delete (error as any).stack;
       expect(toText(error)).toBe('Test error');
     });
 

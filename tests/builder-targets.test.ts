@@ -8,24 +8,24 @@ describe('Builder - Direct Target Support', () => {
       const hueprint = buildHueprint({ enabled: true, target: 'object' });
       const result = hueprint.red('Test');
       expect(typeof result).toBe('object');
-      expect(result.text).toBe('Test');
-      expect(result.style.color).toBe('#ef4444');
+      expect((result as any).text).toBe('Test');
+      expect((result as any).style.color).toBe('#ef4444');
     });
 
     it('should return object with empty style when object target and disabled', () => {
       const hueprint = buildHueprint({ enabled: false, target: 'object' });
       const result = hueprint.red('Test');
       expect(typeof result).toBe('object');
-      expect(result.text).toBe('Test');
-      expect(result.style).toEqual({});
+      expect((result as any).text).toBe('Test');
+      expect((result as any).style).toEqual({});
     });
 
     it('should apply multiple styles with object target', () => {
       const hueprint = buildHueprint({ enabled: true, target: 'object' });
       const result = hueprint.style('Test', { color: 'green', bold: true });
-      expect(result.text).toBe('Test');
-      expect(result.style.color).toBe('#10b981');
-      expect(result.style.fontWeight).toBe('bold');
+      expect((result as any).text).toBe('Test');
+      expect((result as any).style.color).toBe('#10b981');
+      expect((result as any).style.fontWeight).toBe('bold');
     });
 
     it('should apply theme with object target', () => {
@@ -36,8 +36,8 @@ describe('Builder - Direct Target Support', () => {
       const result = hueprint.theme('primary', 'Content');
       
       expect(typeof result).toBe('object');
-      expect(result.text).toBe('[Content]');
-      expect(result.style.color).toBe('#3b82f6');
+      expect((result as any).text).toBe('[Content]');
+      expect((result as any).style.color).toBe('#3b82f6');
     });
   });
 
@@ -120,10 +120,10 @@ describe('Builder - Direct Target Support', () => {
       });
 
       expect(typeof result).toBe('object');
-      expect(result.text).toBe('Test');
-      expect(result.style.color).toBe('#ef4444');
-      expect(result.style.backgroundColor).toBe('#3b82f6');
-      expect(result.style.fontWeight).toBe('bold');
+      expect((result as any).text).toBe('Test');
+      expect((result as any).style.color).toBe('#ef4444');
+      expect((result as any).style.backgroundColor).toBe('#3b82f6');
+      expect((result as any).style.fontWeight).toBe('bold');
     });
 
     it('should apply style method to html target', () => {
@@ -150,7 +150,7 @@ describe('Builder - Direct Target Support', () => {
       const hueprint = buildHueprint({ enabled: true, target: 'object', theme });
       const result = hueprint.theme('badge', 'Task');
 
-      expect(result.text).toBe('✓ Task [done]');
+      expect((result as any).text).toBe('✓ Task [done]');
     });
 
     it('should include prefix and suffix in html target output', () => {
@@ -186,7 +186,7 @@ describe('Builder - Direct Target Support', () => {
       const hueprint = buildHueprint({ enabled: true, target: 'object', theme });
       const result = hueprint.theme('plain', 'Text');
 
-      expect(result.text).toBe('Text');
+      expect((result as any).text).toBe('Text');
     });
   });
 

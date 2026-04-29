@@ -320,7 +320,7 @@ describe('Hueprint Integration', () => {
 
   describe('Default export', () => {
     it('should export default hueprint instance', async () => {
-      const defaultModule = await import('../../src/index.js');
+      const defaultModule = await import('../src/index.js');
       const hueprint = defaultModule.default;
 
       expect(hueprint).toBeDefined();

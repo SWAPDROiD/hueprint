@@ -46,7 +46,7 @@ describe('Utils Edge Cases for Coverage', () => {
   describe('toText edge cases', () => {
     it('should handle error with message only', () => {
       const error = new Error('Test');
-      error.stack = undefined;
+      delete (error as any).stack;
       const result = toText(error);
       expect(result).toBe('Test');
     });

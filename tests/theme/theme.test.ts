@@ -154,10 +154,10 @@ describe('Theme', () => {
 
     it('should handle theme updates', () => {
       const theme = createTheme({ initial: { color: 'blue' } });
-      theme.added = { color: 'green' };
+      (theme as any).added = { color: 'green' };
 
       expect(resolveThemeEntry(theme, 'initial').color).toBe('blue');
-      expect(resolveThemeEntry(theme, 'added').color).toBe('green');
+      expect(resolveThemeEntry(theme as any, 'added').color).toBe('green');
     });
   });
 });
