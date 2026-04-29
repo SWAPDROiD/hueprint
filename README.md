@@ -11,6 +11,7 @@
 <p align="center">
   <img src="https://img.shields.io/npm/v/hueprint" alt="npm version" />
   <img src="https://img.shields.io/npm/dm/hueprint" alt="npm downloads" />
+  <img src="https://img.shields.io/github/actions/workflow/status/SWAPDROiD/hueprint/release.yml" alt="hueprint release" />
   <img src="https://img.shields.io/badge/license-MIT-0f172a" alt="MIT license" />
 </p>
 
